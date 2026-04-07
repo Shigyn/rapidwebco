@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapid'Web — Site vitrine pro en 48h à 290 € | Béziers</title>
+  <meta name="description" content="Artisan, commerçant ou indépendant à Béziers ? Rapid'Web crée votre site vitrine professionnel en 48h pour 290 €. Preview gratuite avant paiement. Sans engagement." />
+  <link rel="canonical" href="https://rapidweb.netlify.app/" />
+  <meta property="og:title" content="Rapid'Web — Votre site pro en 48h à 290 €" />
+  <meta property="og:description" content="Site vitrine clé en main pour TPE, artisans et indépendants. Preview gratuite. Livraison 48h. Sans engagement." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=80" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0a0a0f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Rapid'Web",
+    "description": "Création de sites vitrines professionnels pour TPE, artisans et indépendants. Livraison en 48h.",
+    "url": "https://rapidweb.netlify.app",
+    "telephone": "+33745531434",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Béziers",
+      "addressRegion": "Hérault",
+      "addressCountry": "FR"
+    },
+    "areaServed": ["Béziers","Agde","Pézenas","Narbonne","Hérault","Occitanie"],
+    "priceRange": "€€",
+    "openingHours": "Mo-Fr 09:00-19:00"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #08080e;
+      --bg2: #0d0d18;
+      --surface: rgba(255,255,255,0.04);
+      --surface2: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(0,229,255,0.22);
+      --accent: #00e5ff;
+      --accent-dim: rgba(0,229,255,0.12);
+      --purple: #7c3aed;
+      --orange: #ff6b35;
+      --text: #eeeef5;
+      --muted: #7777aa;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --r: 14px;
+      --r-lg: 22px;
+      --r-xl: 32px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* BG ANIMATED */
+    #bg-scene {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; overflow: hidden;
+    }
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(90px);
+    }
+    .orb-1 {
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(0,229,255,0.11), transparent 65%);
+      top: -350px; left: -250px;
+      animation: drift1 22s ease-in-out infinite alternate;
+    }
+    .orb-2 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(124,58,237,0.14), transparent 65%);
+      bottom: -200px; right: -150px;
+      animation: drift2 28s ease-in-out infinite alternate;
+    }
+    .orb-3 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,107,53,0.08), transparent 65%);
+      top: 40%; left: 50%;
+      animation: drift3 18s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 { to { transform: translate(120px, 100px) scale(1.15); } }
+    @keyframes drift2 { to { transform: translate(-100px, -120px) scale(1.2); } }
+    @keyframes drift3 { to { transform: translate(-80px, 100px) scale(0.85); } }
+
+    #bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+    #grain {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 150px;
+    }
+    nav, main, footer, .wa-btn, .tel-bar { position: relative; z-index: 10; }
+
+    /* TEL BAR */
+    .tel-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 44px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .tel-bar a {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-head); font-weight: 700; font-size: 0.92rem;
+      color: #08080e; transition: opacity 0.2s;
+    }
+    .tel-bar a:hover { opacity: 0.75; }
+    .tel-icon {
+      width: 22px; height: 22px;
+      background: rgba(0,0,0,0.12); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      animation: ring 3s ease-in-out infinite;
+    }
+    @keyframes ring {
+      0%,85%,100%{transform:rotate(0)} 88%{transform:rotate(-15deg)} 92%{transform:rotate(15deg)} 96%{transform:rotate(-8deg)}
+    }
+    .tel-badge {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em;
+      background: rgba(0,0,0,0.14); padding: 3px 10px; border-radius: 50px;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 44px; left: 0; right: 0; z-index: 100;
+      height: 64px; padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,8,14,0.72);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-head); font-weight: 800; font-size: 1.2rem;
+      letter-spacing: -0.03em; display: flex; align-items: center; gap: 10px;
+    }
+    .logo-mark {
+      width: 30px; height: 30px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 900; color: #fff;
+      box-shadow: 0 0 18px rgba(0,229,255,0.4);
+    }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), #00bcd4) !important;
+      color: #08080e !important; padding: 9px 22px; border-radius: 50px;
+      font-weight: 700 !important; font-size: 0.8rem !important;
+      letter-spacing: 0.01em !important; text-transform: none !important;
+      box-shadow: 0 0 22px rgba(0,229,255,0.28);
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 36px rgba(0,229,255,0.5) !important; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      padding: 8px; cursor: pointer;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 108px; left: 0; right: 0;
+      background: rgba(8,8,14,0.97); backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px; flex-direction: column; gap: 20px; z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.05rem; font-weight: 600; padding: 10px 0;
+      border-bottom: 1px solid var(--border); color: var(--muted);
+    }
+    .mobile-menu a:last-child { border-bottom: none; color: var(--accent); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; padding: 190px 40px 110px;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-dim); border: 1px solid var(--border2);
+      border-radius: 50px; padding: 7px 18px;
+      font-size: 0.76rem; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+      animation: bdot 1.6s ease-in-out infinite;
+    }
+    @keyframes bdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.65)} }
+    h1 {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(2.6rem, 7.5vw, 5.8rem);
+      line-height: 1.04; letter-spacing: -0.03em; max-width: 860px;
+      opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
+    }
+    .hl {
+      background: linear-gradient(100deg, var(--accent) 10%, var(--purple) 55%, var(--orange) 90%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      margin-top: 26px; font-size: clamp(0.95rem, 2.2vw, 1.18rem);
+      color: var(--muted); font-weight: 300; max-width: 560px; line-height: 1.75;
+      opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
+    }
+    .hero-ctas {
+      margin-top: 44px; display: flex; gap: 14px; flex-wrap: wrap;
+      justify-content: center; opacity: 0; animation: fadeUp 0.9s 0.8s forwards;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--accent), #00bcd4);
+      color: #08080e; font-family: var(--font-head); font-weight: 700;
+      font-size: 0.95rem; padding: 15px 30px; border-radius: 50px;
+      box-shadow: 0 0 32px rgba(0,229,255,0.32);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 56px rgba(0,229,255,0.55); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text); font-family: var(--font-head); font-weight: 600;
+      font-size: 0.95rem; padding: 15px 30px; border-radius: 50px;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { transform: translateY(-2px); border-color: var(--accent); background: var(--accent-dim); }
+
+    .stat-bar {
+      margin-top: 68px; display: flex;
+      border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden;
+      background: rgba(255,255,255,0.03); backdrop-filter: blur(20px);
+      width: 100%; max-width: 700px;
+      opacity: 0; animation: fadeUp 0.9s 1s forwards;
+    }
+    .stat-item {
+      flex: 1; padding: 22px 16px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-head); font-weight: 800; font-size: 1.9rem; line-height: 1;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-size: 0.73rem; color: var(--muted); margin-top: 5px; font-weight: 500; }
+
+    .scroll-hint {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0.35; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .scroll-arrow {
+      width: 20px; height: 30px; border: 1.5px solid var(--muted); border-radius: 10px; position: relative;
+    }
+    .scroll-arrow::after {
+      content: ''; position: absolute; width: 4px; height: 4px;
+      background: var(--accent); border-radius: 50%;
+      left: 50%; top: 5px; transform: translateX(-50%);
+      animation: sdot 1.9s ease-in-out infinite;
+    }
+    @keyframes sdot { 0%{top:5px;opacity:1} 80%{top:18px;opacity:0} 100%{top:5px;opacity:0} }
+
+    /* SECTIONS */
+    section { padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    }
+    .section-tag::before {
+      content: ''; display: block; width: 20px; height: 2px;
+      background: var(--accent); border-radius: 2px;
+    }
+    h2 {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(1.9rem, 4vw, 3.1rem);
+      line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 1rem; color: var(--muted); max-width: 480px; line-height: 1.7; }
+    .section-header { margin-bottom: 60px; }
+
+    /* OFFRES */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+    }
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 38px 34px; position: relative; overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .pricing-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .pricing-card:hover { transform: translateY(-7px); border-color: var(--border2); box-shadow: 0 28px 70px rgba(0,0,0,0.45); }
+    .pricing-card:hover::before { opacity: 1; }
+    .pricing-card.featured { border-color: var(--border2); background: linear-gradient(135deg, rgba(0,229,255,0.055), rgba(124,58,237,0.055)); box-shadow: 0 0 70px rgba(0,229,255,0.07); }
+    .pricing-card.featured::before { opacity: 1; }
+    .featured-badge {
+      position: absolute; top: 20px; right: 20px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      color: #fff; font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 50px;
+    }
+    .price-name { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; margin-bottom: 14px; }
+    .price-amount { display: flex; align-items: baseline; gap: 4px; margin-bottom: 10px; }
+    .price-amount .euro { font-family: var(--font-head); font-size: 1rem; color: var(--muted); }
+    .price-amount .num {
+      font-family: var(--font-head); font-weight: 800; font-size: 3.2rem; line-height: 1;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .price-amount .per { font-size: 0.82rem; color: var(--muted); }
+    .price-desc { font-size: 0.86rem; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+    .price-features { display: flex; flex-direction: column; gap: 13px; margin-bottom: 32px; }
+    .price-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 0.87rem; }
+    .feat-check {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--accent-dim); border: 1px solid var(--border2);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .feat-check svg { width: 10px; height: 10px; stroke: var(--accent); fill: none; stroke-width: 3; stroke-linecap: round; }
+    .price-cta {
+      display: block; width: 100%; padding: 14px; border-radius: 50px;
+      font-family: var(--font-head); font-weight: 700; font-size: 0.9rem;
+      text-align: center; border: 1px solid var(--border2); color: var(--accent);
+      background: var(--accent-dim); transition: background 0.2s, transform 0.2s, box-shadow 0.2s, color 0.2s;
+    }
+    .price-cta:hover { background: var(--accent); color: #08080e; transform: translateY(-1px); box-shadow: 0 0 28px rgba(0,229,255,0.38); }
+    .pricing-card.featured .price-cta {
+      background: linear-gradient(135deg, var(--accent), #00bcd4);
+      color: #08080e; border-color: transparent; box-shadow: 0 0 26px rgba(0,229,255,0.22);
+    }
+    .pricing-card.featured .price-cta:hover { box-shadow: 0 0 44px rgba(0,229,255,0.5); transform: translateY(-2px); }
+
+    /* PROCESS */
+    #process { border-top: 1px solid var(--border); }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
+    }
+    .process-step {
+      padding: 38px 28px; border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .process-step:last-child { border-right: none; }
+    .process-step:hover { background: var(--surface2); }
+    .step-num {
+      font-family: var(--font-head); font-weight: 800; font-size: 2.8rem;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      opacity: 0.28; line-height: 1; margin-bottom: 18px;
+    }
+    .step-title { font-family: var(--font-head); font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
+    .step-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+    /* SERVICES */
+    #services { border-top: 1px solid var(--border); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 32px 28px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.13); box-shadow: 0 22px 55px rgba(0,0,0,0.42); }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 20px; transition: transform 0.3s;
+    }
+    .service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); }
+    .s1{background:rgba(0,229,255,0.12)} .s2{background:rgba(124,58,237,0.12)} .s3{background:rgba(255,107,53,0.12)}
+    .s4{background:rgba(16,185,129,0.12)} .s5{background:rgba(245,158,11,0.12)} .s6{background:rgba(236,72,153,0.12)}
+    .service-title { font-family: var(--font-head); font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+    .service-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+    /* APROPOS */
+    #apropos { border-top: 1px solid var(--border); }
+    .apropos-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .apropos-visual { position: relative; }
+    .apropos-img {
+      width: 100%; aspect-ratio: 4/5; object-fit: cover;
+      border-radius: var(--r-lg); filter: grayscale(20%);
+    }
+    .apropos-float {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: var(--r); padding: 20px 26px;
+      backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .apropos-float .fn {
+      font-family: var(--font-head); font-weight: 800; font-size: 2rem;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .apropos-float .fl { font-size: 0.78rem; color: var(--muted); }
+    .valeurs { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .valeur {
+      display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--r);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .valeur:hover { border-color: var(--border2); background: var(--accent-dim); }
+    .valeur-icon { font-size: 1.3rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--accent-dim); border-radius: 10px; flex-shrink: 0; }
+    .valeur-title { font-family: var(--font-head); font-weight: 700; font-size: 0.9rem; margin-bottom: 3px; }
+    .valeur-desc { font-size: 0.82rem; color: var(--muted); }
+
+    /* TEMOIGNAGES */
+    #temoignages { border-top: 1px solid var(--border); }
+    .temoignages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .temoignage-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 30px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .temoignage-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); }
+    .stars { display: flex; gap: 2px; margin-bottom: 16px; color: #f59e0b; font-size: 1rem; }
+    .temo-text { font-size: 0.89rem; color: var(--muted); line-height: 1.72; font-style: italic; margin-bottom: 22px; }
+    .temo-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-weight: 700; font-size: 0.82rem; color: #fff; flex-shrink: 0;
+    }
+    .author-name { font-family: var(--font-head); font-weight: 700; font-size: 0.87rem; }
+    .author-job { font-size: 0.76rem; color: var(--muted); }
+
+    /* ZONES */
+    #zones { border-top: 1px solid var(--border); text-align: center; }
+    .zones-wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 44px; }
+    .zone-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px;
+      font-size: 0.84rem; font-weight: 500; background: var(--surface);
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .zone-chip:hover { background: var(--accent-dim); border-color: var(--border2); color: var(--accent); transform: translateY(-2px); }
+
+    /* CONTACT */
+    #contact { border-top: 1px solid var(--border); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: start; }
+    .contact-info h3 { font-family: var(--font-head); font-weight: 700; font-size: 1.25rem; margin-bottom: 10px; }
+    .ci-sub { font-size: 0.87rem; color: var(--muted); margin-bottom: 34px; line-height: 1.65; }
+    .contact-links { display: flex; flex-direction: column; gap: 14px; }
+    .ci-link {
+      display: flex; align-items: center; gap: 14px; padding: 14px 18px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--r);
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .ci-link:hover { border-color: var(--border2); background: var(--accent-dim); transform: translateX(5px); }
+    .ci-icon { width: 36px; height: 36px; background: var(--accent-dim); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .ci-label { font-size: 0.74rem; color: var(--muted); margin-bottom: 2px; }
+    .ci-value { font-weight: 600; font-size: 0.9rem; }
+
+    .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 38px; }
+    .form-title { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; margin-bottom: 6px; }
+    .form-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 30px; line-height: 1.6; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label { font-size: 0.75rem; font-weight: 600; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 12px 16px; color: var(--text); font-family: var(--font-body); font-size: 0.9rem;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,229,255,0.1); }
+    .form-group select {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237777aa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px;
+    }
+    .form-group select option { background: #0d0d18; }
+    .form-group textarea { resize: vertical; min-height: 96px; }
+    .form-notice {
+      font-size: 0.78rem; color: var(--muted); margin-bottom: 20px;
+      padding: 10px 14px;
+      background: rgba(255,107,53,0.07); border: 1px solid rgba(255,107,53,0.18);
+      border-radius: 10px; line-height: 1.55;
+    }
+    .form-submit {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, var(--accent), #00bcd4);
+      color: #08080e; font-family: var(--font-head); font-weight: 700;
+      font-size: 0.95rem; border-radius: 50px; border: none; cursor: pointer;
+      box-shadow: 0 0 26px rgba(0,229,255,0.26);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(0,229,255,0.48); }
+    .form-success { display: none; text-align: center; padding: 36px; }
+    .form-success .si { font-size: 3rem; margin-bottom: 16px; }
+    .form-success h4 { font-family: var(--font-head); font-size: 1.2rem; margin-bottom: 8px; }
+    .form-success p { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 52px 40px 32px; max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 52px; margin-bottom: 48px; }
+    .footer-brand p { font-size: 0.84rem; color: var(--muted); line-height: 1.7; max-width: 280px; margin-top: 14px; }
+    .footer-col h4 { font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 11px; }
+    .footer-col ul a { font-size: 0.87rem; color: var(--muted); transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.78rem; color: var(--muted); }
+    .footer-bottom span { color: var(--accent); }
+
+    /* WHATSAPP */
+    .wa-btn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 58px; height: 58px; background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: waIn 1s 1.8s both;
+    }
+    .wa-btn:hover { transform: scale(1.12); box-shadow: 0 14px 44px rgba(37,211,102,0.62); }
+    .wa-btn svg { width: 28px; height: 28px; fill: #fff; }
+    .wa-pulse {
+      position: absolute; inset: -5px; border-radius: 50%;
+      border: 2px solid rgba(37,211,102,0.38);
+      animation: wap 2.6s ease-in-out infinite;
+    }
+    @keyframes wap { 0%,100%{transform:scale(1);opacity:0.55} 50%{transform:scale(1.22);opacity:0} }
+    @keyframes waIn { from{opacity:0;transform:scale(0.4) translateY(24px)} to{opacity:1;transform:scale(1) translateY(0)} }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      nav { padding: 0 24px; }
+      section { padding: 80px 24px; }
+      #hero { padding: 170px 24px 90px; }
+      .apropos-inner { grid-template-columns: 1fr; gap: 40px; }
+      .apropos-visual { display: none; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .temoignages-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .process-step { border-bottom: 1px solid var(--border); }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 64px 20px; }
+      #hero { padding: 155px 20px 76px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .stat-bar { flex-direction: column; border-radius: var(--r); }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-primary,.btn-secondary { width: 100%; justify-content: center; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 24px 20px; }
+      footer { padding: 40px 20px 24px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="bg-scene" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div id="bg-grid" aria-hidden="true"></div>
+<div id="grain" aria-hidden="true"></div>
+
+<!-- TEL BAR -->
+
+<div class="tel-bar">
+  <a href="tel:+33745531434" aria-label="Appeler Rapid'Web au 07 45 53 14 34">
+    <span class="tel-icon">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#08080e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+    </span>
+    07 45 53 14 34
+    <span class="tel-badge">Appel gratuit</span>
+  </a>
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+  <div class="nav-logo">
+    <div class="logo-mark">RW</div>
+    Rapid'Web
+  </div>
+  <ul class="nav-links">
+    <li><a href="#offres">Offres</a></li>
+    <li><a href="#process">Comment ça marche</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#temoignages">Avis</a></li>
+    <li><a href="#contact" class="nav-cta">Preview gratuite</a></li>
+  </ul>
+  <button class="hamburger" id="menuBtn" aria-label="Ouvrir le menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#offres" onclick="closeMenu()">Offres</a>
+  <a href="#process" onclick="closeMenu()">Comment ça marche</a>
+  <a href="#services" onclick="closeMenu()">Services inclus</a>
+  <a href="#temoignages" onclick="closeMenu()">Avis clients</a>
+  <a href="#contact" onclick="closeMenu()">→ Demander ma preview gratuite</a>
+</div>
+
+<main>
+
+  <!-- HERO -->
+
+  <section id="hero">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Site livré en 48h chrono
+    </div>
+    <h1>Votre site pro,<br>livré en <span class="hl">48 heures.</span></h1>
+    <p class="hero-sub">Artisan, commerçant ou indépendant à Béziers et alentours — on crée votre site vitrine clé en main. Vous voyez le résultat avant de payer.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        Voir ma preview gratuite
+      </a>
+      <a href="#offres" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        Voir les offres
+      </a>
+    </div>
+    <div class="stat-bar">
+      <div class="stat-item">
+        <div class="stat-num" data-target="48" data-suffix="h">0</div>
+        <div class="stat-label">Délai de livraison</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="290" data-suffix="€">0</div>
+        <div class="stat-label">Site vitrine complet</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="100" data-suffix="%">0</div>
+        <div class="stat-label">Preview avant paiement</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-prefix="0">0</div>
+        <div class="stat-label">Engagement</div>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="scroll-arrow"></div>
+      Défiler
+    </div>
+  </section>
+
+  <!-- OFFRES -->
+
+  <section id="offres">
+    <div class="section-header reveal">
+      <div class="section-tag">Tarifs</div>
+      <h2>Simple. Transparent.<br>Sans surprise.</h2>
+      <p class="section-sub">Deux formules claires. Vous ne payez que si votre preview vous convainc.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="price-name">Site Vitrine</div>
+        <div class="price-amount">
+          <span class="euro">€</span><span class="num">290</span>
+        </div>
+        <p class="price-desc">Paiement unique. Votre site en ligne, sans abonnement imposé.</p>
+        <ul class="price-features">
+          <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Site one-page professionnel</li>
+          <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Design personnalisé à votre activité</li>
+          <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Formulaire de contact intégré</li>
+          <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>SEO local optimisé (ville + activité)</li>
+          <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>100% responsive mobile</li>
+          <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Livraison en 48h</li>
+        </ul>
+        <a href="#contact" class="price-cta">Demander ma preview →</a>
+      </div>
+
+```
+  <div class="pricing-card featured reveal reveal-delay-1">
+    <span class="featured-badge">Recommandé</span>
+    <div class="price-name">Site + Support mensuel</div>
+    <div class="price-amount">
+      <span class="euro">€</span><span class="num">290</span>
+      <span class="per">+ 29,90 €/mois</span>
+    </div>
+    <p class="price-desc">Site complet + maintenance, mises à jour et support technique mensuel. Sans engagement.</p>
+    <ul class="price-features">
+      <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Tout inclus dans la formule Site Vitrine</li>
+      <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Modifications de contenu chaque mois</li>
+      <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Mises à jour (horaires, tarifs, photos…)</li>
+      <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Support prioritaire par WhatsApp</li>
+      <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Hébergement inclus</li>
+      <li class="price-feature"><span class="feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Résiliable à tout moment — sans engagement</li>
+    </ul>
+    <a href="#contact" class="price-cta">Je veux cette formule →</a>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- PROCESSUS -->
+
+  <section id="process">
+    <div class="section-header reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">Comment ça marche</div>
+      <h2>De zéro à en ligne<br>en 4 étapes.</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Vous remplissez le formulaire</div>
+        <p class="step-desc">Nom, activité, ville, téléphone. Rien de plus. On s'occupe de tout le reste.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div class="step-title">On crée votre preview</div>
+        <p class="step-desc">En 48h maximum, votre site est prêt. On vous envoie le lien de preview par SMS.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div class="step-title">Vous validez — ou pas</div>
+        <p class="step-desc">Vous aimez → vous payez 290 €. Vous n'aimez pas → aucun frais. Zéro risque.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div class="step-title">On met en ligne</div>
+        <p class="step-desc">Votre site est publié sur votre domaine. Visible sur Google dès aujourd'hui.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+
+  <section id="services">
+    <div class="section-header reveal">
+      <div class="section-tag">Ce qu'on livre</div>
+      <h2>Tout ce qu'il faut.<br>Rien de superflu.</h2>
+      <p class="section-sub">Chaque site livré est complet, optimisé et prêt à convertir dès le premier jour.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon s1">🎨</div>
+        <div class="service-title">Design sur mesure</div>
+        <p class="service-desc">Palette, typo et mise en page adaptées à votre secteur. Aucun template générique.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon s2">📱</div>
+        <div class="service-title">100% Mobile-First</div>
+        <p class="service-desc">Plus de 70 % de vos clients consultent depuis un mobile. Votre site est parfait sur tous les écrans.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon s3">🔍</div>
+        <div class="service-title">SEO Local</div>
+        <p class="service-desc">Optimisé pour votre ville et votre activité. Vos clients vous trouvent sur Google.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon s4">⚡</div>
+        <div class="service-title">Chargement rapide</div>
+        <p class="service-desc">Pas de lourdeur. Votre site se charge vite pour ne perdre aucun visiteur.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon s5">📩</div>
+        <div class="service-title">Formulaire de contact</div>
+        <p class="service-desc">Recevez les demandes clients directement par email. Opérationnel dès la mise en ligne.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon s6">🔒</div>
+        <div class="service-title">SSL & Hébergement</div>
+        <p class="service-desc">Certificat HTTPS + hébergement sécurisé. Votre site est toujours en ligne.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+
+  <section id="apropos">
+    <div class="apropos-inner">
+      <div class="apropos-visual reveal">
+        <img
+          src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=600&q=80"
+          alt="Créateur de sites web à Béziers"
+          loading="lazy"
+          class="apropos-img"
+        />
+        <div class="apropos-float">
+          <div class="fn">48h</div>
+          <div class="fl">Délai moyen de livraison</div>
+        </div>
+      </div>
+      <div class="apropos-text">
+        <div class="section-header reveal">
+          <div class="section-tag">À propos</div>
+          <h2>Un vrai créateur local.<br>Pas une agence.</h2>
+          <p class="section-sub">Rapid'Web, c'est un solo entrepreneur basé à Béziers. Pas d'intermédiaire — vous travaillez directement avec la personne qui crée votre site.</p>
+        </div>
+        <div class="valeurs reveal">
+          <div class="valeur">
+            <div class="valeur-icon">⚡</div>
+            <div>
+              <div class="valeur-title">Réactivité totale</div>
+              <p class="valeur-desc">Réponse sous 2h en journée. Livraison en 48h garantie.</p>
+            </div>
+          </div>
+          <div class="valeur">
+            <div class="valeur-icon">🎯</div>
+            <div>
+              <div class="valeur-title">Zéro jargon</div>
+              <p class="valeur-desc">On parle votre langue. Pas de termes techniques, pas de promesses vagues.</p>
+            </div>
+          </div>
+          <div class="valeur">
+            <div class="valeur-icon">🤝</div>
+            <div>
+              <div class="valeur-title">Preview d'abord</div>
+              <p class="valeur-desc">Vous voyez votre site avant de payer. C'est notre engagement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+
+  <section id="temoignages">
+    <div class="section-header reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">Avis clients</div>
+      <h2>Ils nous ont fait confiance.</h2>
+      <p class="section-sub" style="margin:0 auto;">Des professionnels de la région qui ont sauté le pas.</p>
+    </div>
+    <div class="temoignages-grid">
+      <div class="temoignage-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="temo-text">"J'étais sceptique — voir le site avant de payer m'a convaincu en 2 minutes. Résultat bluffant pour mon activité de peinture."</p>
+        <div class="temo-author">
+          <div class="author-avatar">ML</div>
+          <div>
+            <div class="author-name">Marc L.</div>
+            <div class="author-job">Peintre en bâtiment — Béziers</div>
+          </div>
+        </div>
+      </div>
+      <div class="temoignage-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="temo-text">"Site livré en 36h chrono. Des clients m'ont contacté via le formulaire la semaine suivante. Je recommande sans hésiter."</p>
+        <div class="temo-author">
+          <div class="author-avatar">SC</div>
+          <div>
+            <div class="author-name">Sophie C.</div>
+            <div class="author-job">Naturopathe — Agde</div>
+          </div>
+        </div>
+      </div>
+      <div class="temoignage-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="temo-text">"Le support à 29,90 €/mois vaut vraiment le coup. Une modif en 24h à chaque fois. J'aurais dû le faire bien plus tôt."</p>
+        <div class="temo-author">
+          <div class="author-avatar">TR</div>
+          <div>
+            <div class="author-name">Thomas R.</div>
+            <div class="author-job">Plombier — Pézenas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONES -->
+
+  <section id="zones">
+    <div class="section-header reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">Zones couvertes</div>
+      <h2>On intervient partout<br>dans l'Hérault.</h2>
+      <p class="section-sub" style="margin:0 auto;">100 % à distance — on travaille avec vous où que vous soyez dans la région.</p>
+    </div>
+    <div class="zones-wrap reveal">
+      <span class="zone-chip">📍 Béziers</span>
+      <span class="zone-chip">📍 Agde</span>
+      <span class="zone-chip">📍 Pézenas</span>
+      <span class="zone-chip">📍 Narbonne</span>
+      <span class="zone-chip">📍 Montpellier</span>
+      <span class="zone-chip">📍 Sète</span>
+      <span class="zone-chip">📍 Lodève</span>
+      <span class="zone-chip">📍 Clermont-l'Hérault</span>
+      <span class="zone-chip">📍 Cap d'Agde</span>
+      <span class="zone-chip">📍 Marseillan</span>
+      <span class="zone-chip">📍 Lunel</span>
+      <span class="zone-chip">📍 Hérault (34)</span>
+      <span class="zone-chip">📍 Occitanie</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="section-header reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">Contact</div>
+      <h2>Demandez votre<br>preview gratuite.</h2>
+      <p class="section-sub" style="margin:0 auto;">Remplissez le formulaire. On crée votre site en 48h. Vous validez avant de payer.</p>
+    </div>
+    <div class="contact-inner">
+
+```
+  <div class="contact-info reveal">
+    <h3>Joignez-nous directement.</h3>
+    <p class="ci-sub">Réponse garantie sous 2h en journée. Vous parlez directement au créateur — pas à un standard.</p>
+    <div class="contact-links">
+      <a href="tel:+33745531434" class="ci-link" aria-label="Appeler Rapid'Web">
+        <span class="ci-icon">📞</span>
+        <div><div class="ci-label">Téléphone</div><div class="ci-value">07 45 53 14 34</div></div>
+      </a>
+      <a href="https://wa.me/33745531434?text=Bonjour%2C%20je%20souhaite%20une%20preview%20gratuite%20pour%20mon%20site." target="_blank" rel="noopener" class="ci-link" aria-label="WhatsApp Rapid'Web">
+        <span class="ci-icon">💬</span>
+        <div><div class="ci-label">WhatsApp</div><div class="ci-value">Message direct</div></div>
+      </a>
+      <div class="ci-link">
+        <span class="ci-icon">📍</span>
+        <div><div class="ci-label">Zone</div><div class="ci-value">Béziers & Hérault (34)</div></div>
+      </div>
+      <div class="ci-link">
+        <span class="ci-icon">⏱</span>
+        <div><div class="ci-label">Disponibilité</div><div class="ci-value">Lun–Ven · 9h–19h</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal reveal-delay-1">
+    <div id="formContent">
+      <div class="form-title">Votre demande de preview</div>
+      <p class="form-sub">Ce formulaire est réservé aux professionnels avec une activité réelle. Renseignez votre vrai secteur pour recevoir une preview adaptée.</p>
+
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none"><input name="bot-field" /></p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="activite">Votre activité professionnelle *</label>
+          <select id="activite" name="activite" required>
+            <option value="" disabled selected>Sélectionnez votre secteur</option>
+            <optgroup label="Artisanat & BTP">
+              <option>Plombier</option>
+              <option>Électricien</option>
+              <option>Peintre en bâtiment</option>
+              <option>Maçon / Carreleur</option>
+              <option>Menuisier / Ébéniste</option>
+              <option>Couvreur / Charpentier</option>
+              <option>Artisan BTP (autre)</option>
+            </optgroup>
+            <optgroup label="Bien-être & Santé">
+              <option>Naturopathe</option>
+              <option>Ostéopathe</option>
+              <option>Kinésithérapeute</option>
+              <option>Sophrologue / Coach</option>
+              <option>Bien-être (autre)</option>
+            </optgroup>
+            <optgroup label="Commerce & Services">
+              <option>Restaurateur / Traiteur</option>
+              <option>Coiffeur / Esthéticien</option>
+              <option>Photographe</option>
+              <option>Auto-entrepreneur / Consultant</option>
+              <option>Commerce local</option>
+            </optgroup>
+            <optgroup label="Autre">
+              <option>Profession libérale</option>
+              <option>Autre activité professionnelle</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ville">Ville *</label>
+            <input type="text" id="ville" name="ville" placeholder="Ex : Béziers" required />
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone *</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="06 XX XX XX XX" required autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Informations complémentaires (facultatif)</label>
+          <textarea id="message" name="message" placeholder="Site actuel, besoins spécifiques, questions…"></textarea>
+        </div>
+
+        <div class="form-notice">
+          ⚠️ Formulaire réservé aux professionnels exerçant une activité réelle. Les demandes sans activité professionnelle ne recevront pas de suite.
+        </div>
+
+        <button type="submit" class="form-submit">Demander ma preview gratuite →</button>
+      </form>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <div class="si">✅</div>
+      <h4>Demande bien reçue !</h4>
+      <p>On vous contacte dans les 48h avec votre preview personnalisée. Gardez un œil sur votre téléphone.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <div class="logo-mark">RW</div>
+        Rapid'Web
+      </div>
+      <p>Création de sites vitrines pour les professionnels de l'Hérault. Livraison 48h, preview gratuite, sans engagement.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#offres">Nos offres</a></li>
+        <li><a href="#process">Comment ça marche</a></li>
+        <li><a href="#services">Services inclus</a></li>
+        <li><a href="#temoignages">Avis clients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+33745531434">07 45 53 14 34</a></li>
+        <li><a href="https://wa.me/33745531434" target="_blank" rel="noopener">WhatsApp direct</a></li>
+        <li><a href="#contact">Demander une preview</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>Rapid'Web</span> — Béziers, Hérault. Tous droits réservés.</p>
+    <p>Création de sites vitrines · <span>290 €</span> · Livraison 48h</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTTANT -->
+
+<a
+href=“https://wa.me/33745531434?text=Bonjour%2C%20je%20souhaite%20une%20preview%20gratuite%20pour%20mon%20site.”
+class=“wa-btn”
+target=”_blank”
+rel=“noopener”
+aria-label=“Contacter Rapid’Web sur WhatsApp”
+
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2C8.268 2 2 8.268 2 16c0 2.413.633 4.675 1.74 6.635L2 30l7.572-1.714A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.45 11.45 0 01-5.822-1.587l-.418-.247-4.496 1.018.995-4.377-.272-.435A11.465 11.465 0 014.5 16C4.5 9.648 9.648 4.5 16 4.5S27.5 9.648 27.5 16 22.352 27.5 16 27.5zm6.29-8.51c-.345-.172-2.04-1.005-2.355-1.12-.316-.115-.547-.172-.777.172-.23.345-.893 1.12-1.095 1.35-.2.23-.402.258-.747.086-.345-.172-1.457-.537-2.776-1.712-1.025-.915-1.718-2.044-1.92-2.389-.2-.345-.02-.53.152-.702.155-.153.345-.402.517-.603.172-.2.23-.345.345-.575.115-.23.058-.43-.029-.603-.086-.172-.777-1.873-1.065-2.563-.28-.673-.566-.58-.777-.59-.2-.01-.43-.013-.66-.013s-.603.086-.92.43c-.316.345-1.207 1.178-1.207 2.872s1.236 3.33 1.408 3.56c.172.23 2.432 3.71 5.892 5.204.824.356 1.468.569 1.969.728.827.263 1.58.226 2.175.137.664-.1 2.04-.834 2.328-1.638.287-.804.287-1.493.2-1.638-.086-.144-.315-.23-.66-.402z"/>
+  </svg>
+</a>
+
+<script>
+  // MENU MOBILE
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMenu() { mobileMenu.classList.remove('open'); }
+
+  // SCROLL REVEAL
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // COMPTEURS STAT BAR
+  function countUp(el) {
+    const target = parseInt(el.dataset.target) || 0;
+    const suffix = el.dataset.suffix || '';
+    const dur = 1600;
+    const start = performance.now();
+    (function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * ease) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    })(start);
+  }
+  const statObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); statObs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => statObs.observe(el));
+
+  // FORM SUBMIT (Netlify)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(fd).toString()
+    }).finally(() => {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+  }
+</script>
+
+</body>
+</html>
