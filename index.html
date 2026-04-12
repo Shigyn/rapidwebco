@@ -4,977 +4,635 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loca'Web — Votre image en ligne, on s'en occupe.</title>
-<meta name="description" content="Vos clients vous cherchent. On fait en sorte que ce qu'ils trouvent soit à votre hauteur. 99€ setup + 49€/mois tout inclus.">
-
+<title>Loca'Web — Votre site offert. On gère le reste.</title>
+<meta name="description" content="Votre site est offert. Vous ne payez que l'hébergement, le domaine et le support. 99€ de mise en service + 49€/mois.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
-@font-face {
-  font-family: 'ClashDisplay';
-  src: url('https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap');
-}
-
 :root {
-  --black: #0d0d0d;
-  --black2: #161616;
-  --black3: #1e1e1e;
-  --red: #E8281E;
-  --red-dim: rgba(232,40,30,0.2);
-  --white: #F2F0EC;
-  --white-dim: rgba(242,240,236,0.5);
-  --white-faint: rgba(242,240,236,0.07);
-  --font-display: 'ClashDisplay', 'DM Sans', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --black:  #0c0c0c;
+  --black2: #141414;
+  --black3: #1c1c1c;
+  --red:    #E8281E;
+  --red2:   rgba(232,40,30,0.15);
+  --white:  #F0EEE9;
+  --muted:  rgba(240,238,233,0.45);
+  --faint:  rgba(240,238,233,0.07);
+  --fd: 'Syne', sans-serif;
+  --fb: 'DM Sans', sans-serif;
+  --r: 12px;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: var(--font-body);
-  font-weight: 300;
-  line-height: 1.6;
-  overflow-x: hidden;
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--fb);
+  font-weight:300;
+  line-height:1.6;
+  overflow-x:hidden;
 }
 
 /* GRAIN */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9000;
 }
 
 /* ─── NAV ─── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 500;
-  padding: 22px 6vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(to bottom, rgba(13,13,13,0.98) 60%, transparent);
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:16px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(12,12,12,0.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--faint);
 }
 
-.logo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.35rem;
-  color: var(--white);
-  text-decoration: none;
-  letter-spacing: -0.01em;
+/* LOGO SVG */
+.logo-wrap{text-decoration:none;display:flex;align-items:center;gap:10px;}
+.logo-icon{width:34px;height:34px;flex-shrink:0;}
+.logo-text{
+  font-family:var(--fd);font-weight:800;
+  font-size:1.15rem;letter-spacing:-0.02em;
+  color:var(--white);line-height:1;
 }
-.logo span { color: var(--red); }
+.logo-text span{color:var(--red);}
 
-.nav-cta {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--white);
-  text-decoration: none;
-  border: 1px solid rgba(242,240,236,0.2);
-  padding: 10px 22px;
-  transition: border-color 0.2s, color 0.2s;
-  letter-spacing: 0.02em;
+.nav-btn{
+  background:var(--red);color:var(--white);
+  font-family:var(--fb);font-weight:500;font-size:0.82rem;
+  padding:10px 18px;text-decoration:none;
+  border-radius:8px;
+  letter-spacing:0.02em;
+  transition:opacity .2s;
 }
-.nav-cta:hover { border-color: var(--red); color: var(--red); }
+.nav-btn:hover{opacity:.85;}
 
 /* ─── HERO ─── */
-#hero {
-  min-height: 100vh;
-  padding: 140px 6vw 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+#hero{
+  min-height:100svh;
+  padding:100px 20px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
 }
 
-.hero-line {
-  position: absolute;
-  top: 0; bottom: 0;
-  right: 28vw;
-  width: 1px;
-  background: var(--white-faint);
-  pointer-events: none;
+.hero-glow{
+  position:absolute;top:-80px;right:-80px;
+  width:320px;height:320px;
+  background:radial-gradient(circle, rgba(232,40,30,0.18) 0%, transparent 70%);
+  pointer-events:none;
 }
 
-.hero-dot {
-  position: absolute;
-  top: 140px;
-  right: calc(28vw - 4px);
-  width: 8px; height: 8px;
-  background: var(--red);
-  border-radius: 50%;
-  animation: blink 2.5s infinite;
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--black2);border:1px solid rgba(232,40,30,0.3);
+  padding:7px 14px;border-radius:100px;
+  font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--red);margin-bottom:28px;width:fit-content;
+}
+.badge-dot{
+  width:6px;height:6px;background:var(--red);border-radius:50%;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(1.4);}}
+
+h1{
+  font-family:var(--fd);font-weight:800;
+  font-size:clamp(2.4rem,8vw,5.5rem);
+  line-height:1.05;letter-spacing:-0.03em;
+  margin-bottom:20px;
+}
+h1 em{font-style:normal;color:var(--red);}
+
+.hero-sub{
+  font-size:1rem;color:var(--muted);
+  max-width:360px;line-height:1.75;
+  margin-bottom:36px;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(232,40,30,0.1);
+  border:1px solid rgba(232,40,30,0.25);
+  border-radius:100px;padding:10px 18px;
+  font-size:0.85rem;color:var(--white);
+  margin-bottom:32px;width:fit-content;
+  font-weight:500;
 }
+.hero-pill strong{color:var(--red);}
 
-.eyebrow {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--red);
-  margin-bottom: 32px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.btn-main{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--red);color:var(--white);
+  font-family:var(--fb);font-weight:600;font-size:1rem;
+  padding:17px 28px;text-decoration:none;
+  border-radius:12px;width:100%;max-width:340px;
+  transition:transform .2s,box-shadow .2s;
+  animation:pulseBorder 2.8s ease infinite;
 }
+@keyframes pulseBorder{
+  0%,100%{box-shadow:0 0 0 0 rgba(232,40,30,.4);}
+  50%{box-shadow:0 0 0 10px rgba(232,40,30,0);}
+}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,40,30,.35);animation:none;}
+.btn-main svg{flex-shrink:0;}
 
-.eyebrow::before {
-  content: '';
-  width: 30px;
-  height: 1px;
-  background: var(--red);
-  flex-shrink: 0;
+.hero-stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  margin-top:40px;
 }
-
-h1 {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 7.5vw, 6.5rem);
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  max-width: 820px;
-  margin-bottom: 32px;
+.stat-card{
+  background:var(--black2);border:1px solid var(--faint);
+  border-radius:12px;padding:18px 16px;
 }
-
-h1 .accent { color: var(--red); }
-
-/* ─── HERO ANIMATE ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
+.stat-val{
+  font-family:var(--fd);font-weight:800;font-size:1.9rem;
+  letter-spacing:-0.02em;display:block;
 }
-.ha { opacity: 0; animation: fadeUp 0.75s ease forwards; }
-.ha-1 { animation-delay: 0.05s; }
-.ha-2 { animation-delay: 0.22s; }
-.ha-3 { animation-delay: 0.4s; }
-.ha-4 { animation-delay: 0.58s; }
-.ha-5 { animation-delay: 0.74s; }
-
-.hero-sub {
-  font-size: clamp(1rem, 1.6vw, 1.15rem);
-  color: var(--white-dim);
-  max-width: 440px;
-  line-height: 1.75;
-  margin-bottom: 52px;
-  font-weight: 300;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* ─── BTN PULSE ─── */
-@keyframes pulseBorder {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(232,40,30,0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(232,40,30,0); }
-}
-.btn-red {
-  background: var(--red);
-  color: var(--white);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 16px 34px;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: opacity 0.2s, transform 0.2s;
-  display: inline-block;
-  animation: pulseBorder 2.5s ease infinite;
-}
-.btn-red:hover { opacity: 0.88; transform: translateY(-2px); animation: none; }
-
-.btn-ghost {
-  color: var(--white-dim);
-  font-size: 0.88rem;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: color 0.2s;
-}
-.btn-ghost:hover { color: var(--white); }
-.btn-ghost span { font-size: 1.1rem; }
-
-.hero-numbers {
-  margin-top: 90px;
-  padding-top: 40px;
-  border-top: 1px solid var(--white-faint);
-  display: flex;
-  gap: 50px;
-  flex-wrap: wrap;
-}
-
-.num-item {}
-.num-val {
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--white);
-  display: block;
-  letter-spacing: -0.02em;
-}
-.num-val .sup { color: var(--red); font-size: 1.2rem; vertical-align: super; }
-.num-label {
-  font-size: 0.78rem;
-  color: var(--white-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
+.stat-val .r{color:var(--red);}
+.stat-lbl{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;}
 
 /* ─── MARQUEE ─── */
-.marquee-wrap {
-  overflow: hidden;
-  border-top: 1px solid rgba(232,40,30,0.45);
-  border-bottom: 1px solid rgba(232,40,30,0.45);
-  padding: 13px 0;
-  background: var(--black2);
+.mq-wrap{
+  overflow:hidden;
+  border-top:1px solid rgba(232,40,30,.35);
+  border-bottom:1px solid rgba(232,40,30,.35);
+  padding:12px 0;background:var(--black2);
 }
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: scroll 24s linear infinite;
+.mq-track{display:flex;width:max-content;animation:mq 22s linear infinite;}
+.mq-item{
+  font-size:0.72rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--muted);padding:0 24px;white-space:nowrap;
 }
-
-.marquee-item {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--white-dim);
-  padding: 0 28px;
-  white-space: nowrap;
-}
-
-.marquee-item .dot {
-  color: var(--red);
-  margin-left: 28px;
-}
-
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
+.mq-item .dot{color:var(--red);margin-left:24px;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* ─── SECTIONS ─── */
-section { padding: 110px 6vw; }
+section{padding:72px 20px;}
 
-.s-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--red);
-  margin-bottom: 22px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.s-tag{
+  font-size:0.68rem;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--red);margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
 }
-.s-label::before {
-  content: '';
-  width: 20px; height: 1px;
-  background: var(--red);
+.s-tag::before{content:'';width:16px;height:1px;background:var(--red);}
+
+h2{
+  font-family:var(--fd);font-weight:800;
+  font-size:clamp(1.9rem,6vw,3.2rem);
+  line-height:1.08;letter-spacing:-0.025em;
+  margin-bottom:12px;
 }
 
-h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-  margin-bottom: 16px;
+.s-sub{
+  font-size:.9rem;color:var(--muted);
+  line-height:1.75;margin-bottom:40px;
 }
 
-.section-sub {
-  font-size: 1rem;
-  color: var(--white-dim);
-  max-width: 460px;
-  line-height: 1.75;
-  margin-bottom: 60px;
+/* ─── OFFRE HERO ─── */
+#offre{background:var(--black2);}
+
+.offre-card{
+  background:var(--black3);
+  border:1px solid rgba(232,40,30,.25);
+  border-radius:16px;padding:28px 22px;
+  margin-bottom:16px;
+}
+.offre-card.featured{
+  background:var(--red);
+  border-color:var(--red);
+}
+
+.offre-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:20px;
+}
+.offre-name{
+  font-family:var(--fd);font-weight:800;font-size:1rem;
+}
+.offre-badge-gratuit{
+  background:rgba(240,238,233,0.15);
+  color:var(--white);
+  font-size:0.65rem;text-transform:uppercase;letter-spacing:.1em;
+  padding:4px 10px;border-radius:100px;
+}
+.offre-card.featured .offre-badge-gratuit{
+  background:rgba(0,0,0,0.2);
+}
+
+.offre-price{
+  font-family:var(--fd);font-weight:800;
+  font-size:3rem;letter-spacing:-.03em;
+  line-height:1;margin-bottom:4px;
+}
+.offre-price .cur{font-size:1.4rem;vertical-align:super;color:inherit;}
+.offre-price .free{
+  font-size:1.8rem;
+  background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.6) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.offre-desc{font-size:.8rem;opacity:.65;margin-bottom:22px;}
+
+.offre-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.offre-list li{
+  font-size:.84rem;display:flex;gap:10px;align-items:flex-start;line-height:1.45;
+}
+.offre-list li::before{content:'→';color:var(--red);flex-shrink:0;}
+.offre-card.featured .offre-list li::before{color:rgba(255,255,255,.7);}
+.offre-card.featured .offre-list li{color:rgba(255,255,255,.85);}
+
+.offre-note{
+  font-size:.78rem;color:var(--muted);
+  text-align:center;margin-top:8px;line-height:1.6;
 }
 
 /* ─── PROBLÈME ─── */
-#probleme { background: var(--black2); }
+#probleme{background:var(--black);}
 
-.prob-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1px;
-  background: var(--white-faint);
+.prob-list{display:flex;flex-direction:column;gap:2px;margin-top:32px;}
+.prob-item{
+  background:var(--black2);
+  padding:24px 20px;
+  border-left:2px solid transparent;
+  transition:border-color .3s,background .3s;
+  position:relative;overflow:hidden;
 }
+.prob-item::after{
+  content:'';position:absolute;bottom:0;left:0;
+  height:2px;width:0;background:var(--red);
+  transition:width .4s ease;
+}
+.prob-item:hover{border-left-color:var(--red);background:var(--black3);}
+.prob-item:hover::after{width:100%;}
 
-.prob-card {
-  background: var(--black2);
-  padding: 40px 32px;
-  transition: background 0.3s, transform 0.3s;
-  position: relative;
-  overflow: hidden;
+.prob-num{
+  font-family:var(--fd);font-weight:800;font-size:.7rem;
+  color:var(--red);letter-spacing:.1em;margin-bottom:10px;display:block;
 }
-.prob-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  height: 2px;
-  width: 0;
-  background: var(--red);
-  transition: width 0.4s ease;
+.prob-item h3{
+  font-family:var(--fd);font-weight:700;font-size:.95rem;
+  margin-bottom:6px;
 }
-.prob-card:hover { background: var(--black3); transform: translateY(-2px); }
-.prob-card:hover::after { width: 100%; }
+.prob-item p{font-size:.82rem;color:var(--muted);line-height:1.7;}
 
-.prob-card h3 {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--white);
-}
+/* ─── COMMENT ─── */
+#comment{background:var(--black2);}
 
-.prob-card p {
-  font-size: 0.87rem;
-  color: var(--white-dim);
-  line-height: 1.75;
+.steps{display:flex;flex-direction:column;gap:0;margin-top:32px;}
+.step{
+  display:flex;gap:18px;
+  padding:24px 0;
+  border-bottom:1px solid var(--faint);
+  transition:padding-left .3s;
 }
-
-.prob-num {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--red-dim);
-  margin-bottom: 20px;
-  display: block;
-  border-bottom: 2px solid var(--red);
-  width: fit-content;
-  padding-bottom: 4px;
+.step:hover{padding-left:8px;}
+.step:last-child{border-bottom:none;}
+.step-n{
+  font-family:var(--fd);font-weight:800;font-size:.72rem;
+  color:var(--red);letter-spacing:.08em;
+  padding-top:3px;flex-shrink:0;width:36px;
 }
-
-/* ─── COUNTER ANIM ─── */
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+.step h3{
+  font-family:var(--fd);font-weight:700;font-size:.98rem;
+  margin-bottom:6px;
 }
-.num-val { animation: countUp 0.6s ease both; }
-
-/* ─── STEP HOVER ─── */
-.step-row {
-  transition: padding-left 0.3s ease;
-}
-.step-row:hover {
-  padding-left: 12px;
-  border-bottom-color: rgba(232,40,30,0.3);
-}
-
-.steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-width: 700px;
-  margin-top: 60px;
-}
-
-.step-row {
-  display: grid;
-  grid-template-columns: 60px 1fr;
-  gap: 30px;
-  padding: 36px 0;
-  border-bottom: 1px solid var(--white-faint);
-  align-items: start;
-}
-
-.step-index {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--red);
-  letter-spacing: 0.06em;
-  padding-top: 4px;
-}
-
-.step-content h3 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-
-.step-content p {
-  font-size: 0.88rem;
-  color: var(--white-dim);
-  line-height: 1.75;
-}
-
-/* ─── TARIFS ─── */
-#tarifs { background: var(--black2); }
-
-.pricing-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--white-faint);
-  max-width: 720px;
-  margin-top: 60px;
-}
-
-@media (max-width: 580px) {
-  .pricing-cards { grid-template-columns: 1fr; }
-}
-
-.p-card {
-  background: var(--black2);
-  padding: 46px 38px;
-}
-
-.p-card.main {
-  background: var(--black3);
-  border-top: 2px solid var(--red);
-}
-
-.p-tag {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--white-dim);
-  margin-bottom: 20px;
-  display: block;
-}
-
-.p-price {
-  font-family: var(--font-display);
-  font-size: 3.8rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  margin-bottom: 6px;
-}
-
-.p-price .currency {
-  font-size: 1.8rem;
-  vertical-align: super;
-  color: var(--red);
-}
-
-.p-freq {
-  font-size: 0.82rem;
-  color: var(--white-dim);
-  margin-bottom: 34px;
-  display: block;
-}
-
-.p-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-}
-
-.p-list li {
-  font-size: 0.87rem;
-  color: var(--white-dim);
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  line-height: 1.5;
-}
-
-.p-list li::before {
-  content: '—';
-  color: var(--red);
-  flex-shrink: 0;
-}
-
-.pricing-note {
-  margin-top: 28px;
-  font-size: 0.8rem;
-  color: rgba(242,240,236,0.3);
-  max-width: 500px;
-  line-height: 1.7;
-}
+.step p{font-size:.82rem;color:var(--muted);line-height:1.7;}
 
 /* ─── CE QU'ON GÈRE ─── */
-#gestion {}
+#gestion{}
 
-.gestion-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 1px;
-  background: var(--white-faint);
-  margin-top: 60px;
+.g-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;margin-top:32px;
 }
-
-.g-item {
-  background: var(--black);
-  padding: 38px 32px;
-  transition: background 0.3s, border-left 0.3s;
-  cursor: default;
-  border-left: 2px solid transparent;
+.g-card{
+  background:var(--black2);border:1px solid var(--faint);
+  border-radius:12px;padding:20px 16px;
+  transition:border-color .3s,transform .3s;
 }
-.g-item:hover { background: var(--black2); border-left: 2px solid var(--red); }
-
-.g-icon {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(232,40,30,0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  font-size: 1rem;
+.g-card:hover{border-color:rgba(232,40,30,.4);transform:translateY(-2px);}
+.g-icon{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--red2);border:1px solid rgba(232,40,30,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;margin-bottom:12px;
 }
-
-.g-item h3 {
-  font-family: var(--font-display);
-  font-size: 0.98rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.g-item p {
-  font-size: 0.85rem;
-  color: var(--white-dim);
-  line-height: 1.7;
-}
+.g-card h3{font-family:var(--fd);font-weight:700;font-size:.85rem;margin-bottom:6px;}
+.g-card p{font-size:.76rem;color:var(--muted);line-height:1.65;}
 
 /* ─── POUR QUI ─── */
-#pourqui { background: var(--black2); }
+#pourqui{background:var(--black2);}
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 40px;
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+.tag{
+  padding:8px 14px;border:1px solid rgba(240,238,233,.1);
+  border-radius:100px;font-size:.78rem;color:var(--muted);
+  transition:all .25s;cursor:default;
 }
+.tag:hover{border-color:var(--red);color:var(--white);background:var(--red2);transform:translateY(-1px);}
 
-/* ─── TAG HOVER ANIMATION ─── */
-.tag {
-  padding: 9px 18px;
-  border: 1px solid rgba(242,240,236,0.1);
-  font-size: 0.85rem;
-  color: var(--white-dim);
-  transition: all 0.25s ease;
-  cursor: default;
+.pq-sub{
+  margin-top:32px;font-size:.9rem;color:var(--muted);line-height:1.8;
 }
-.tag:hover {
-  border-color: var(--red);
-  color: var(--white);
-  background: rgba(232,40,30,0.08);
-  transform: translateY(-2px);
-}
-
-.pourqui-sub {
-  margin-top: 52px;
-  max-width: 580px;
-  font-size: 1.05rem;
-  color: var(--white-dim);
-  line-height: 1.85;
-}
-.pourqui-sub strong { color: var(--white); font-weight: 400; }
+.pq-sub strong{color:var(--white);font-weight:400;}
 
 /* ─── TEMOIGNAGES ─── */
-#temoignages {}
+#temoignages{background:var(--black);}
 
-.temoignages-wrap {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1px;
-  background: var(--white-faint);
-  margin-top: 60px;
+.temo-list{display:flex;flex-direction:column;gap:12px;margin-top:32px;}
+.temo{
+  background:var(--black2);border:1px solid var(--faint);
+  border-radius:16px;padding:24px 20px;
+  transition:border-color .3s;
 }
-
-.temoignage {
-  background: var(--black);
-  padding: 42px 34px;
-  transition: background 0.3s;
+.temo:hover{border-color:rgba(232,40,30,.3);}
+.temo-quote{
+  font-size:2.5rem;line-height:1;
+  color:var(--red);opacity:.5;margin-bottom:10px;display:block;
+  font-family:var(--fd);
 }
-.temoignage:hover { background: var(--black2); }
-
-.quote-mark {
-  font-family: var(--font-display);
-  font-size: 3.5rem;
-  color: var(--red);
-  opacity: 0.45;
-  line-height: 1;
-  margin-bottom: 16px;
-  display: block;
+.temo p{font-size:.85rem;line-height:1.8;color:var(--white);margin-bottom:18px;}
+.temo-who strong{
+  font-family:var(--fd);font-size:.88rem;font-weight:700;display:block;margin-bottom:2px;
 }
-
-.temoignage p {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  color: var(--white);
-  margin-bottom: 28px;
-}
-
-.t-author strong {
-  font-family: var(--font-display);
-  font-size: 0.92rem;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 3px;
-}
-.t-author span {
-  font-size: 0.78rem;
-  color: var(--white-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
+.temo-who span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
 
 /* ─── FAQ ─── */
-#faq { background: var(--black2); }
+#faq{background:var(--black2);}
 
-.faq-wrap {
-  max-width: 680px;
-  margin-top: 60px;
+.faq-list{display:flex;flex-direction:column;gap:2px;margin-top:32px;}
+.faq-item{background:var(--black3);border-radius:10px;overflow:hidden;margin-bottom:6px;}
+.faq-q{
+  width:100%;background:none;border:none;
+  color:var(--white);font-family:var(--fd);
+  font-size:.9rem;font-weight:700;
+  padding:20px 18px;text-align:left;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  transition:color .2s;
 }
-
-.faq-item {
-  border-bottom: 1px solid var(--white-faint);
+.faq-q:hover{color:var(--red);}
+.faq-ico{
+  width:22px;height:22px;border-radius:50%;
+  border:1px solid rgba(240,238,233,.15);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);font-size:.9rem;flex-shrink:0;
+  transition:transform .3s,border-color .2s;
 }
-
-.faq-q {
-  width: 100%;
-  background: none;
-  border: none;
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: 0.98rem;
-  font-weight: 600;
-  padding: 26px 0;
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  letter-spacing: -0.01em;
-  transition: color 0.2s;
-}
-.faq-q:hover { color: var(--red); }
-
-.faq-icon {
-  width: 22px; height: 22px;
-  border: 1px solid rgba(242,240,236,0.15);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  color: var(--red);
-  flex-shrink: 0;
-  transition: transform 0.3s, border-color 0.2s;
-}
-.faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--red); }
-
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.faq-item.open .faq-a { max-height: 200px; }
-
-.faq-a p {
-  padding: 0 0 26px;
-  font-size: 0.88rem;
-  color: var(--white-dim);
-  line-height: 1.8;
-}
+.faq-item.open .faq-ico{transform:rotate(45deg);border-color:var(--red);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.faq-item.open .faq-a{max-height:200px;}
+.faq-a p{padding:0 18px 20px;font-size:.82rem;color:var(--muted);line-height:1.8;}
 
 /* ─── CONTACT ─── */
-#contact {
-  position: relative;
-  overflow: hidden;
+#contact{background:var(--black);}
+
+.contact-hero{margin-bottom:32px;}
+.contact-hero h2{margin-bottom:10px;}
+.contact-hero p{font-size:.88rem;color:var(--muted);line-height:1.75;}
+
+.contact-perks{
+  display:flex;flex-direction:column;gap:10px;margin-bottom:32px;
+}
+.perk{
+  display:flex;align-items:center;gap:12px;
+  font-size:.82rem;color:var(--muted);
+}
+.perk-dot{
+  width:6px;height:6px;background:var(--red);border-radius:50%;flex-shrink:0;
 }
 
-.contact-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
+.cform{display:flex;flex-direction:column;gap:12px;}
+.cform-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 
-@media (max-width: 760px) {
-  .contact-inner { grid-template-columns: 1fr; gap: 50px; }
+.cform input,
+.cform select,
+.cform textarea{
+  background:var(--black2);
+  border:1px solid var(--faint);
+  color:var(--white);
+  font-family:var(--fb);font-size:.88rem;font-weight:300;
+  padding:14px 16px;width:100%;outline:none;
+  border-radius:10px;
+  transition:border-color .2s,background .2s;
+  -webkit-appearance:none;appearance:none;
 }
-
-.contact-left h2 { margin-bottom: 16px; }
-
-.contact-left p {
-  font-size: 0.95rem;
-  color: var(--white-dim);
-  line-height: 1.8;
-  margin-bottom: 40px;
-  max-width: 380px;
+.cform input::placeholder,.cform textarea::placeholder{color:rgba(240,238,233,.25);}
+.cform input:focus,.cform select:focus,.cform textarea:focus{
+  border-color:var(--red);background:rgba(232,40,30,.05);
 }
+.cform select{cursor:pointer;color:rgba(240,238,233,.5);}
+.cform select option{background:var(--black2);color:var(--white);}
+.cform textarea{resize:vertical;min-height:90px;}
 
-.contact-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.btn-submit{
+  background:var(--red);color:var(--white);
+  font-family:var(--fb);font-weight:600;font-size:.95rem;
+  padding:17px;border:none;cursor:pointer;
+  border-radius:12px;width:100%;
+  transition:opacity .2s,transform .2s;
+  letter-spacing:.02em;
 }
-
-.contact-detail-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  font-size: 0.87rem;
-  color: var(--white-dim);
-}
-
-.contact-detail-item::before {
-  content: '';
-  width: 20px; height: 1px;
-  background: var(--red);
-  margin-top: 10px;
-  flex-shrink: 0;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-@media (max-width: 400px) { .form-row { grid-template-columns: 1fr; } }
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  background: var(--black2);
-  border: 1px solid rgba(242,240,236,0.08);
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 300;
-  padding: 15px 18px;
-  width: 100%;
-  outline: none;
-  transition: border-color 0.2s;
-  appearance: none;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(242,240,236,0.25);
-}
-
-/* ─── FORM INPUT FOCUS ROUGE ─── */
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-  border-color: var(--red);
-  background: rgba(232,40,30,0.04);
-}
-
-.contact-form select {
-  cursor: pointer;
-  color: rgba(242,240,236,0.5);
-}
-.contact-form select option { background: var(--black2); color: var(--white); }
-
-.contact-form textarea {
-  resize: vertical;
-  min-height: 90px;
-}
-
-.btn-submit {
-  background: var(--red);
-  color: var(--white);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.92rem;
-  padding: 17px 28px;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 0.04em;
-  width: 100%;
-  transition: opacity 0.2s, transform 0.2s;
-  text-align: center;
-}
-.btn-submit:hover { opacity: 0.88; transform: translateY(-2px); }
+.btn-submit:hover{opacity:.88;transform:translateY(-2px);}
 
 /* ─── FOOTER ─── */
-footer {
-  background: var(--black);
-  border-top: 1px solid var(--white-faint);
-  padding: 36px 6vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
+footer{
+  background:var(--black);
+  border-top:1px solid var(--faint);
+  padding:28px 20px;
+  display:flex;flex-direction:column;
+  align-items:center;gap:12px;text-align:center;
 }
-
-footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
+footer p{font-size:.72rem;color:rgba(240,238,233,.2);}
 
 /* ─── WHATSAPP ─── */
-.wa-btn {
-  position: fixed;
-  bottom: 28px;
-  right: 22px;
-  z-index: 400;
-  background: #25D366;
-  width: 54px; height: 54px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
-  animation: float 3.5s ease-in-out infinite;
-  transition: transform 0.2s;
+.wa{
+  position:fixed;bottom:24px;right:18px;z-index:400;
+  background:#25D366;width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;
+  box-shadow:0 4px 18px rgba(37,211,102,.4);
+  animation:wafloat 3s ease-in-out infinite;
 }
-.wa-btn:hover { transform: scale(1.08); }
+.wa:hover{transform:scale(1.08);}
+@keyframes wafloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
+/* ─── REVEAL ─── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.rv.on{opacity:1;transform:translateY(0);}
+.rvl{opacity:0;transform:translateX(-18px);transition:opacity .6s ease,transform .6s ease;}
+.rvl.on{opacity:1;transform:translateX(0);}
 
-/* ─── REVEAL DEPUIS GAUCHE pour steps ─── */
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* ─── HERO ANIM ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.ha{opacity:0;animation:fadeUp .7s ease forwards;}
+.ha1{animation-delay:.05s;}.ha2{animation-delay:.2s;}
+.ha3{animation-delay:.38s;}.ha4{animation-delay:.54s;}.ha5{animation-delay:.7s;}
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  nav .nav-cta { display: none; }
-  .hero-numbers { gap: 28px; }
-  h1 { font-size: clamp(2.6rem, 10vw, 3.8rem); }
-  footer { flex-direction: column; text-align: center; }
+/* ─── DESKTOP ─── */
+@media(min-width:768px){
+  nav{padding:18px 5vw;}
+  #hero{padding:120px 5vw 80px;}
+  h1{font-size:clamp(3rem,6vw,5.5rem);}
+  .hero-stats{grid-template-columns:repeat(4,1fr);}
+  .btn-main{width:auto;}
+  section{padding:100px 5vw;}
+  .g-grid{grid-template-columns:repeat(3,1fr);}
+  .prob-list{display:grid;grid-template-columns:1fr 1fr;}
+  .temo-list{display:grid;grid-template-columns:repeat(3,1fr);}
+  .offre-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .offre-card{margin-bottom:0;}
+  .cform-row{grid-template-columns:1fr 1fr;}
+  footer{flex-direction:row;justify-content:space-between;text-align:left;}
 }
 </style>
 
 </head>
 <body>
 
+<!-- NAV -->
+
 <nav>
-  <a href="#" class="logo">Loca<span>'</span>Web</a>
-  <a href="#contact" class="nav-cta">Prendre contact</a>
+  <a href="#" class="logo-wrap">
+    <!-- LOGO SVG -->
+    <svg class="logo-icon" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="34" height="34" rx="9" fill="#E8281E"/>
+      <path d="M8 11h6l4 12 4-12h4" stroke="#F0EEE9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="26" cy="23" r="2.5" fill="#F0EEE9"/>
+    </svg>
+    <span class="logo-text">Loca<span>'</span>Web</span>
+  </a>
+  <a href="#contact" class="nav-btn">Démarrer →</a>
 </nav>
 
 <!-- HERO -->
 
 <section id="hero">
-  <div class="hero-line"></div>
-  <div class="hero-dot"></div>
+  <div class="hero-glow"></div>
 
-  <div class="eyebrow ha ha-1">Partout en France</div>
+  <div class="badge ha ha1"><div class="badge-dot"></div>Disponible partout en France</div>
 
-  <h1 class="ha ha-2">
-    Vos clients vous cherchent.<br>
-    On fait en sorte que <span class="accent">ce qu'ils trouvent</span><br>
-    soit à votre hauteur.
+  <h1 class="ha ha2">
+    Votre site est<br><em>offert.</em><br>On gère le reste.
   </h1>
 
-  <p class="hero-sub ha ha-3">
-    Une présence en ligne soignée, livrée en 48h. Vous n'avez rien à gérer — on s'occupe de tout, en permanence.
+  <p class="hero-sub ha ha3">
+    Vous ne payez que l'hébergement, le nom de domaine et le support technique. Rien de plus.
   </p>
 
-  <div class="hero-actions ha ha-4">
-    <a href="#contact" class="btn-red">Je veux être visible →</a>
-    <a href="#comment" class="btn-ghost"><span>↓</span> Comment ça marche</a>
+  <div class="hero-pill ha ha4">
+    <strong>99€</strong> mise en service &nbsp;·&nbsp; <strong>49€/mois</strong> tout inclus
   </div>
 
-  <div class="hero-numbers ha ha-5">
-    <div class="num-item">
-      <span class="num-val">48<span class="sup">h</span></span>
-      <span class="num-label">Délai de livraison</span>
-    </div>
-    <div class="num-item">
-      <span class="num-val">99<span class="sup">€</span></span>
-      <span class="num-label">Pour démarrer</span>
-    </div>
-    <div class="num-item">
-      <span class="num-val">49<span class="sup">€</span></span>
-      <span class="num-label">Par mois, tout inclus</span>
-    </div>
-    <div class="num-item">
-      <span class="num-val">0</span>
-      <span class="num-label">Truc à gérer</span>
-    </div>
-  </div>
+  <a href="#contact" class="btn-main ha ha5">
+    Je veux voir ma page
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+
 </section>
 
 <!-- MARQUEE -->
 
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item">Image professionnelle<span class="dot">◆</span></span>
-    <span class="marquee-item">Livraison 48h<span class="dot">◆</span></span>
-    <span class="marquee-item">Hébergement inclus<span class="dot">◆</span></span>
-    <span class="marquee-item">Nom de domaine offert<span class="dot">◆</span></span>
-    <span class="marquee-item">Zéro gestion<span class="dot">◆</span></span>
-    <span class="marquee-item">Partout en France<span class="dot">◆</span></span>
-    <span class="marquee-item">Support inclus<span class="dot">◆</span></span>
-    <span class="marquee-item">Image professionnelle<span class="dot">◆</span></span>
-    <span class="marquee-item">Livraison 48h<span class="dot">◆</span></span>
-    <span class="marquee-item">Hébergement inclus<span class="dot">◆</span></span>
-    <span class="marquee-item">Nom de domaine offert<span class="dot">◆</span></span>
-    <span class="marquee-item">Zéro gestion<span class="dot">◆</span></span>
-    <span class="marquee-item">Partout en France<span class="dot">◆</span></span>
-    <span class="marquee-item">Support inclus<span class="dot">◆</span></span>
+<div class="mq-wrap">
+  <div class="mq-track">
+    <span class="mq-item">Site offert<span class="dot">◆</span></span>
+    <span class="mq-item">Hébergement inclus<span class="dot">◆</span></span>
+    <span class="mq-item">Domaine offert<span class="dot">◆</span></span>
+    <span class="mq-item">Livraison 48h<span class="dot">◆</span></span>
+    <span class="mq-item">Zéro gestion<span class="dot">◆</span></span>
+    <span class="mq-item">Partout en France<span class="dot">◆</span></span>
+    <span class="mq-item">Support WhatsApp<span class="dot">◆</span></span>
+    <span class="mq-item">Site offert<span class="dot">◆</span></span>
+    <span class="mq-item">Hébergement inclus<span class="dot">◆</span></span>
+    <span class="mq-item">Domaine offert<span class="dot">◆</span></span>
+    <span class="mq-item">Livraison 48h<span class="dot">◆</span></span>
+    <span class="mq-item">Zéro gestion<span class="dot">◆</span></span>
+    <span class="mq-item">Partout en France<span class="dot">◆</span></span>
+    <span class="mq-item">Support WhatsApp<span class="dot">◆</span></span>
   </div>
 </div>
+
+<!-- OFFRE -->
+
+<section id="offre">
+  <span class="s-tag">L'offre</span>
+  <h2 class="rv">Simple.<br>Transparent.</h2>
+  <p class="s-sub rv">Le site est offert. Vous payez uniquement ce qui le fait tourner.</p>
+
+  <div class="offre-cards">
+    <div class="offre-card rv">
+      <div class="offre-top">
+        <span class="offre-name">Mise en service</span>
+        <span class="offre-badge-gratuit">Une seule fois</span>
+      </div>
+      <div class="offre-price"><span class="cur">€</span>99</div>
+      <p class="offre-desc">Payé une seule fois pour démarrer</p>
+      <ul class="offre-list">
+        <li>Création de votre page sur mesure</li>
+        <li>Design adapté à votre activité</li>
+        <li>Formulaire de contact intégré</li>
+        <li>Bouton d'appel &amp; WhatsApp direct</li>
+        <li>Prévisualisation avant paiement</li>
+      </ul>
+    </div>
+
+```
+<div class="offre-card featured rv">
+  <div class="offre-top">
+    <span class="offre-name">Hébergement + Support</span>
+    <span class="offre-badge-gratuit">Mensuel</span>
+  </div>
+  <div class="offre-price"><span class="cur">€</span>49</div>
+  <p class="offre-desc">Résiliable à tout moment, sans préavis</p>
+  <ul class="offre-list">
+    <li>Hébergement haute disponibilité</li>
+    <li>Nom de domaine .fr ou .com inclus</li>
+    <li>Maintenance &amp; mises à jour</li>
+    <li>Modifications mineures incluses</li>
+    <li>Support direct par WhatsApp</li>
+  </ul>
+</div>
+```
+
+  </div>
+
+  <p class="offre-note rv">Votre site reste en ligne tant que vous êtes abonné. Pas de contrat, pas d'engagement.</p>
+</section>
 
 <!-- PROBLÈME -->
 
 <section id="probleme">
-  <span class="s-label">La réalité</span>
-  <h2 class="reveal">Aujourd'hui,<br>votre image en ligne<br>vous échappe.</h2>
-  <p class="section-sub reveal">Vos clients cherchent sur Google avant d'appeler. Ce qu'ils trouvent — ou ne trouvent pas — forge leur première impression.</p>
+  <span class="s-tag">Pourquoi c'est utile</span>
+  <h2 class="rv">Vos clients vous cherchent.<br>Que trouvent-ils ?</h2>
 
-  <div class="prob-grid">
-    <div class="prob-card reveal">
+  <div class="prob-list">
+    <div class="prob-item rv">
       <span class="prob-num">01</span>
       <h3>Introuvable sur Google</h3>
-      <p>Si vous n'apparaissez pas, vos concurrents captent vos clients. Chaque jour sans présence en ligne, c'est une opportunité perdue.</p>
+      <p>Sans présence en ligne, vos concurrents captent vos clients. Chaque jour sans page, c'est une opportunité perdue.</p>
     </div>
-    <div class="prob-card reveal">
+    <div class="prob-item rv">
       <span class="prob-num">02</span>
-      <h3>Une première impression ratée</h3>
-      <p>Un Facebook à l'abandon ou rien du tout — ça ne inspire pas confiance. Vos clients méritent mieux, et vous aussi.</p>
+      <h3>Première impression ratée</h3>
+      <p>Un Facebook à l'abandon ou rien du tout — ça n'inspire pas confiance. Vos clients méritent mieux.</p>
     </div>
-    <div class="prob-card reveal">
+    <div class="prob-item rv">
       <span class="prob-num">03</span>
       <h3>Trop cher, trop compliqué</h3>
-      <p>Les agences facturent des milliers d'euros. Les outils DIY prennent des semaines. Aucune de ces options ne vous convient.</p>
+      <p>Les agences facturent des milliers d'euros. Les outils DIY prennent des semaines. Aucune option ne convient.</p>
     </div>
-    <div class="prob-card reveal">
+    <div class="prob-item rv">
       <span class="prob-num">04</span>
       <h3>Personne pour s'en occuper</h3>
-      <p>Vous avez un métier à faire tourner. Vous n'avez pas le temps de gérer un site, un hébergeur, un nom de domaine.</p>
+      <p>Vous avez un métier à faire tourner. Vous n'avez pas le temps de gérer un hébergeur et un nom de domaine.</p>
     </div>
   </div>
 </section>
@@ -982,34 +640,34 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
 <!-- COMMENT -->
 
 <section id="comment">
-  <span class="s-label">Comment ça marche</span>
-  <h2 class="reveal">Simple comme<br>un coup de fil.</h2>
+  <span class="s-tag">Comment ça marche</span>
+  <h2 class="rv">Simple comme<br>un coup de fil.</h2>
 
-  <div class="steps-list">
-    <div class="step-row reveal-left">
-      <div class="step-index">01 →</div>
-      <div class="step-content">
+  <div class="steps">
+    <div class="step rvl">
+      <div class="step-n">01 →</div>
+      <div>
         <h3>Vous me parlez de votre activité</h3>
-        <p>Un message, un appel. Je vous pose quelques questions sur ce que vous faites, pour qui, où. Rien de plus.</p>
+        <p>Un message, un appel. Je vous pose quelques questions. Rien de plus.</p>
       </div>
     </div>
-    <div class="step-row reveal-left">
-      <div class="step-index">02 →</div>
-      <div class="step-content">
+    <div class="step rvl">
+      <div class="step-n">02 →</div>
+      <div>
         <h3>Je crée votre page en 48h</h3>
-        <p>Je vous envoie un lien pour voir le résultat avant de payer. Vous validez, on ajuste si besoin.</p>
+        <p>Vous recevez un lien pour voir le résultat avant de payer. On ajuste si besoin.</p>
       </div>
     </div>
-    <div class="step-row reveal-left">
-      <div class="step-index">03 →</div>
-      <div class="step-content">
+    <div class="step rvl">
+      <div class="step-n">03 →</div>
+      <div>
         <h3>Vous payez, c'est en ligne</h3>
-        <p>99€ de mise en place, puis 49€/mois. Votre nom de domaine est activé, votre page est visible.</p>
+        <p>99€ de mise en service, puis 49€/mois. Votre nom de domaine est activé, votre page est visible.</p>
       </div>
     </div>
-    <div class="step-row reveal-left">
-      <div class="step-index">04 →</div>
-      <div class="step-content">
+    <div class="step rvl">
+      <div class="step-n">04 →</div>
+      <div>
         <h3>Vous n'y pensez plus jamais</h3>
         <p>Hébergement, maintenance, mises à jour — je gère. Vous avez d'autres choses à faire.</p>
       </div>
@@ -1017,78 +675,42 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
   </div>
 </section>
 
-<!-- TARIFS -->
-
-<section id="tarifs">
-  <span class="s-label">Tarifs</span>
-  <h2 class="reveal">Clair. Sans surprise.</h2>
-
-  <div class="pricing-cards reveal">
-    <div class="p-card">
-      <span class="p-tag">Mise en ligne</span>
-      <div class="p-price"><span class="currency">€</span>99</div>
-      <span class="p-freq">Une seule fois</span>
-      <ul class="p-list">
-        <li>Création de votre page sur mesure</li>
-        <li>Design adapté à votre activité</li>
-        <li>Formulaire de contact intégré</li>
-        <li>Bouton d'appel / WhatsApp direct</li>
-        <li>Prévisualisation avant paiement</li>
-      </ul>
-    </div>
-    <div class="p-card main">
-      <span class="p-tag">Support mensuel</span>
-      <div class="p-price"><span class="currency">€</span>49</div>
-      <span class="p-freq">Par mois — résiliable à tout moment</span>
-      <ul class="p-list">
-        <li>Hébergement haute disponibilité</li>
-        <li>Nom de domaine .fr ou .com inclus</li>
-        <li>Maintenance et mises à jour</li>
-        <li>Modifications mineures incluses</li>
-        <li>Support direct par WhatsApp</li>
-      </ul>
-    </div>
-  </div>
-
-  <p class="pricing-note reveal">Aucun contrat. Aucun engagement. Votre page reste en ligne tant que vous êtes abonné.</p>
-</section>
-
 <!-- CE QU'ON GÈRE -->
 
 <section id="gestion">
-  <span class="s-label">Ce qu'on gère pour vous</span>
-  <h2 class="reveal">Vous ne touchez<br>à rien.</h2>
+  <span class="s-tag">Ce qu'on gère pour vous</span>
+  <h2 class="rv">Vous ne touchez<br>à rien.</h2>
 
-  <div class="gestion-grid">
-    <div class="g-item reveal">
+  <div class="g-grid">
+    <div class="g-card rv">
       <div class="g-icon">🌐</div>
       <h3>Nom de domaine</h3>
-      <p>Votre adresse personnalisée sur internet, enregistrée et renouvelée automatiquement.</p>
+      <p>Votre adresse personnalisée, enregistrée et renouvelée automatiquement.</p>
     </div>
-    <div class="g-item reveal">
+    <div class="g-card rv">
       <div class="g-icon">⚡</div>
       <h3>Hébergement</h3>
-      <p>Votre page est en ligne 24h/24, rapide, sans coupure. Vous ne savez même pas que ça tourne.</p>
+      <p>Votre page en ligne 24h/24, rapide, sans coupure.</p>
     </div>
-    <div class="g-item reveal">
+    <div class="g-card rv">
       <div class="g-icon">📱</div>
       <h3>Affichage mobile</h3>
-      <p>Parfait sur smartphone, tablette, ordinateur. Vos clients vous trouvent comme ils veulent.</p>
+      <p>Parfait sur smartphone. Là où 80% de vos clients vous cherchent.</p>
     </div>
-    <div class="g-item reveal">
+    <div class="g-card rv">
       <div class="g-icon">📩</div>
-      <h3>Demandes de contact</h3>
-      <p>Les messages de vos clients arrivent directement dans votre boîte mail. Rien à configurer.</p>
+      <h3>Formulaire de contact</h3>
+      <p>Les demandes arrivent dans votre boîte mail. Rien à configurer.</p>
     </div>
-    <div class="g-item reveal">
+    <div class="g-card rv">
       <div class="g-icon">🔧</div>
       <h3>Maintenance</h3>
-      <p>Si quelque chose ne va pas, je m'en occupe. Vous n'avez qu'à m'envoyer un message.</p>
+      <p>Quelque chose ne va pas ? Un message et c'est réglé.</p>
     </div>
-    <div class="g-item reveal">
+    <div class="g-card rv">
       <div class="g-icon">✏️</div>
       <h3>Mises à jour</h3>
-      <p>Nouveaux horaires, nouveau service, nouvelle adresse — envoyez-moi le changement, c'est réglé.</p>
+      <p>Nouveaux horaires, nouveau service — envoyez le changement, c'est fait.</p>
     </div>
   </div>
 </section>
@@ -1096,8 +718,8 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
 <!-- POUR QUI -->
 
 <section id="pourqui">
-  <span class="s-label">Pour qui</span>
-  <h2 class="reveal">Pour ceux qui font<br>un vrai métier.</h2>
+  <span class="s-tag">Pour qui</span>
+  <h2 class="rv">Pour ceux qui font<br>un vrai métier.</h2>
 
   <div class="tags">
     <span class="tag">Artisans</span>
@@ -1118,38 +740,38 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
     <span class="tag">Carreleurs</span>
   </div>
 
-  <p class="pourqui-sub reveal">
-    Vous êtes <strong>indépendant ou chef d'une petite structure</strong>. Vous n'avez pas envie de vous occuper d'internet — vous avez un métier à faire tourner. <strong>C'est exactement pour ça qu'on est là.</strong>
+  <p class="pq-sub rv">
+    Vous êtes <strong>indépendant ou chef d'une petite structure</strong>. Vous n'avez pas envie de vous occuper d'internet. <strong>C'est exactement pour ça qu'on est là.</strong>
   </p>
 </section>
 
-<!-- TÉMOIGNAGES -->
+<!-- TEMOIGNAGES -->
 
 <section id="temoignages">
-  <span class="s-label">Ils nous font confiance</span>
-  <h2 class="reveal">Ce qu'ils en disent</h2>
+  <span class="s-tag">Ils nous font confiance</span>
+  <h2 class="rv">Ce qu'ils en disent</h2>
 
-  <div class="temoignages-wrap">
-    <div class="temoignage reveal">
-      <span class="quote-mark">"</span>
-      <p>J'avais honte de ne pas avoir de site depuis des années. En deux jours c'était réglé. Maintenant quand je donne ma carte de visite, les gens peuvent me retrouver facilement.</p>
-      <div class="t-author">
+  <div class="temo-list">
+    <div class="temo rv">
+      <span class="temo-quote">"</span>
+      <p>J'avais honte de ne pas avoir de site depuis des années. En deux jours c'était réglé. Maintenant mes clients me retrouvent facilement.</p>
+      <div class="temo-who">
         <strong>Isabelle M.</strong>
         <span>Voyante — Toulouse</span>
       </div>
     </div>
-    <div class="temoignage reveal">
-      <span class="quote-mark">"</span>
-      <p>Le premier client venu via ma page a largement couvert les 49€ du mois. Je n'ai rien eu à faire à part valider le design. C'est exactement ce que je cherchais.</p>
-      <div class="t-author">
+    <div class="temo rv">
+      <span class="temo-quote">"</span>
+      <p>Le premier client venu via ma page a largement couvert les 49€ du mois. Je n'ai rien eu à faire à part valider le design.</p>
+      <div class="temo-who">
         <strong>Karim B.</strong>
         <span>Peintre en bâtiment — Lyon</span>
       </div>
     </div>
-    <div class="temoignage reveal">
-      <span class="quote-mark">"</span>
-      <p>Mes clients me disent souvent qu'ils m'ont trouvée sur internet et que ma page les a rassurés. Avant ils ne trouvaient rien. Ça change tout pour la confiance.</p>
-      <div class="t-author">
+    <div class="temo rv">
+      <span class="temo-quote">"</span>
+      <p>Mes clients me disent qu'ils m'ont trouvée sur internet et que ma page les a rassurés. Avant ils ne trouvaient rien.</p>
+      <div class="temo-who">
         <strong>Sophie R.</strong>
         <span>Naturopathe — Bordeaux</span>
       </div>
@@ -1160,29 +782,29 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
 <!-- FAQ -->
 
 <section id="faq">
-  <span class="s-label">Questions fréquentes</span>
-  <h2 class="reveal">On répond à tout.</h2>
+  <span class="s-tag">Questions fréquentes</span>
+  <h2 class="rv">On répond à tout.</h2>
 
-  <div class="faq-wrap">
+  <div class="faq-list">
     <div class="faq-item">
-      <button class="faq-q">Est-ce que je peux arrêter quand je veux ? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>Oui, sans préavis. Si vous arrêtez l'abonnement, votre page est mise hors ligne. Vous pouvez reprendre à tout moment pour la remettre en ligne.</p></div>
+      <button class="faq-q">Est-ce que je peux arrêter quand je veux ?<span class="faq-ico">+</span></button>
+      <div class="faq-a"><p>Oui, sans préavis. Si vous stoppez l'abonnement, votre page est mise hors ligne. Vous pouvez reprendre à tout moment.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Combien de temps pour être en ligne ? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>En général 24 à 48h après notre échange. Vous voyez d'abord votre page sur un lien temporaire. Dès que vous validez et que le paiement est effectué, tout est actif.</p></div>
+      <button class="faq-q">Le site m'appartient vraiment ?<span class="faq-ico">+</span></button>
+      <div class="faq-a"><p>Le site est créé pour vous et reste en ligne tant que l'abonnement est actif. C'est ce modèle qui permet de vous l'offrir sans frais de création élevés.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Est-ce que vous travaillez partout en France ? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>Oui, tout se passe à distance. Peu importe votre ville ou département, on peut travailler ensemble par WhatsApp ou email.</p></div>
+      <button class="faq-q">Combien de temps pour être en ligne ?<span class="faq-ico">+</span></button>
+      <div class="faq-a"><p>24 à 48h après notre échange. Vous voyez d'abord votre page sur un lien temporaire. Dès que vous validez et que le paiement est fait, tout est actif.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Je peux faire des modifications après ? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>Oui. Les petites modifications — texte, horaires, photo, numéro de téléphone — sont incluses dans l'abonnement. Vous m'envoyez un message et c'est fait.</p></div>
+      <button class="faq-q">Vous travaillez partout en France ?<span class="faq-ico">+</span></button>
+      <div class="faq-a"><p>Oui, tout se passe à distance. WhatsApp ou email, peu importe votre ville.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Et si je veux une page plus complète plus tard ? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>On en parle. Selon ce que vous souhaitez ajouter, on trouve une solution adaptée sans tout refaire de zéro.</p></div>
+      <button class="faq-q">Je peux modifier ma page après ?<span class="faq-ico">+</span></button>
+      <div class="faq-a"><p>Les petites modifications — texte, horaires, photo, téléphone — sont incluses. Envoyez-moi un message et c'est réglé.</p></div>
     </div>
   </div>
 </section>
@@ -1190,62 +812,59 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
 <!-- CONTACT -->
 
 <section id="contact">
-  <div class="contact-inner">
-    <div class="contact-left reveal">
-      <span class="s-label">Contact</span>
-      <h2>Dites-moi ce que vous faites.</h2>
-      <p>Je crée votre page et vous la recevez avant même de payer. Aucun risque.</p>
-
-```
-  <div class="contact-detail">
-    <div class="contact-detail-item">Réponse sous 24h</div>
-    <div class="contact-detail-item">Prévisualisation gratuite avant paiement</div>
-    <div class="contact-detail-item">Disponible partout en France</div>
-  </div>
-</div>
-
-<form class="contact-form reveal" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="contact">
-  <input type="hidden" name="bot-field">
-
-  <div class="form-row">
-    <input type="text" name="prenom" placeholder="Prénom" required>
-    <input type="tel" name="telephone" placeholder="Téléphone" required>
+  <div class="contact-hero rv">
+    <span class="s-tag">Démarrer</span>
+    <h2>Dites-moi ce que vous faites.</h2>
+    <p>Je crée votre page et vous la recevez avant même de payer. Aucun risque.</p>
   </div>
 
-  <input type="email" name="email" placeholder="Email" required>
-
-  <select name="activite" required>
-    <option value="" disabled selected>Votre activité</option>
-    <option>Artisan (peinture, plomberie, électricité…)</option>
-    <option>Thérapeute / bien-être</option>
-    <option>Voyant / médium</option>
-    <option>Coach / consultant</option>
-    <option>Commerce local</option>
-    <option>Restauration</option>
-    <option>Autre</option>
-  </select>
-
-  <textarea name="message" placeholder="Décrivez votre activité en quelques mots (facultatif)"></textarea>
-
-  <button type="submit" class="btn-submit">Je veux voir ma page →</button>
-</form>
-```
-
+  <div class="contact-perks rv">
+    <div class="perk"><div class="perk-dot"></div>Réponse sous 24h</div>
+    <div class="perk"><div class="perk-dot"></div>Prévisualisation gratuite avant paiement</div>
+    <div class="perk"><div class="perk-dot"></div>Disponible partout en France</div>
   </div>
+
+  <form class="cform rv" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact">
+    <input type="hidden" name="bot-field">
+    <div class="cform-row">
+      <input type="text" name="prenom" placeholder="Prénom" required>
+      <input type="tel" name="telephone" placeholder="Téléphone" required>
+    </div>
+    <input type="email" name="email" placeholder="Email" required>
+    <select name="activite" required>
+      <option value="" disabled selected>Votre activité</option>
+      <option>Artisan (peinture, plomberie, électricité…)</option>
+      <option>Thérapeute / bien-être</option>
+      <option>Voyant / médium</option>
+      <option>Coach / consultant</option>
+      <option>Commerce local</option>
+      <option>Restauration</option>
+      <option>Autre</option>
+    </select>
+    <textarea name="message" placeholder="Décrivez votre activité en quelques mots (facultatif)"></textarea>
+    <button type="submit" class="btn-submit">Je veux voir ma page →</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
 
 <footer>
-  <a href="#" class="logo">Loca<span>'</span>Web</a>
+  <a href="#" class="logo-wrap">
+    <svg class="logo-icon" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="34" height="34" rx="9" fill="#E8281E"/>
+      <path d="M8 11h6l4 12 4-12h4" stroke="#F0EEE9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="26" cy="23" r="2.5" fill="#F0EEE9"/>
+    </svg>
+    <span class="logo-text">Loca<span>'</span>Web</span>
+  </a>
   <p>Votre image en ligne, on s'en occupe · Partout en France</p>
   <p>© 2025 Loca'Web</p>
 </footer>
 
 <!-- WHATSAPP -->
 
-<a href="https://wa.me/33600000000" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="https://wa.me/33600000000" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
@@ -1253,15 +872,15 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
 
 <script>
   // REVEAL
-  const obs = new IntersectionObserver((entries) => {
+  const io = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 70);
-        obs.unobserve(e.target);
+        setTimeout(() => e.target.classList.add('on'), i * 80);
+        io.unobserve(e.target);
       }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
+  document.querySelectorAll('.rv, .rvl').forEach(el => io.observe(el));
 
   // FAQ
   document.querySelectorAll('.faq-q').forEach(btn => {
