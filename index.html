@@ -22,7 +22,7 @@
   --black2: #161616;
   --black3: #1e1e1e;
   --red: #E8281E;
-  --red-dim: rgba(232,40,30,0.12);
+  --red-dim: rgba(232,40,30,0.2);
   --white: #F2F0EC;
   --white-dim: rgba(242,240,236,0.5);
   --white-faint: rgba(242,240,236,0.07);
@@ -153,6 +153,18 @@ h1 {
 
 h1 .accent { color: var(--red); }
 
+/* ─── HERO ANIMATE ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ha { opacity: 0; animation: fadeUp 0.75s ease forwards; }
+.ha-1 { animation-delay: 0.05s; }
+.ha-2 { animation-delay: 0.22s; }
+.ha-3 { animation-delay: 0.4s; }
+.ha-4 { animation-delay: 0.58s; }
+.ha-5 { animation-delay: 0.74s; }
+
 .hero-sub {
   font-size: clamp(1rem, 1.6vw, 1.15rem);
   color: var(--white-dim);
@@ -169,6 +181,11 @@ h1 .accent { color: var(--red); }
   flex-wrap: wrap;
 }
 
+/* ─── BTN PULSE ─── */
+@keyframes pulseBorder {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,40,30,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(232,40,30,0); }
+}
 .btn-red {
   background: var(--red);
   color: var(--white);
@@ -180,8 +197,9 @@ h1 .accent { color: var(--red); }
   letter-spacing: 0.02em;
   transition: opacity 0.2s, transform 0.2s;
   display: inline-block;
+  animation: pulseBorder 2.5s ease infinite;
 }
-.btn-red:hover { opacity: 0.88; transform: translateY(-2px); }
+.btn-red:hover { opacity: 0.88; transform: translateY(-2px); animation: none; }
 
 .btn-ghost {
   color: var(--white-dim);
@@ -224,8 +242,8 @@ h1 .accent { color: var(--red); }
 /* ─── MARQUEE ─── */
 .marquee-wrap {
   overflow: hidden;
-  border-top: 1px solid rgba(232,40,30,0.25);
-  border-bottom: 1px solid rgba(232,40,30,0.25);
+  border-top: 1px solid rgba(232,40,30,0.45);
+  border-bottom: 1px solid rgba(232,40,30,0.45);
   padding: 13px 0;
   background: var(--black2);
 }
@@ -304,9 +322,21 @@ h2 {
 .prob-card {
   background: var(--black2);
   padding: 40px 32px;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
 }
-.prob-card:hover { background: var(--black3); }
+.prob-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--red);
+  transition: width 0.4s ease;
+}
+.prob-card:hover { background: var(--black3); transform: translateY(-2px); }
+.prob-card:hover::after { width: 100%; }
 
 .prob-card h3 {
   font-family: var(--font-display);
@@ -334,8 +364,21 @@ h2 {
   padding-bottom: 4px;
 }
 
-/* ─── COMMENT ─── */
-#comment {}
+/* ─── COUNTER ANIM ─── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.num-val { animation: countUp 0.6s ease both; }
+
+/* ─── STEP HOVER ─── */
+.step-row {
+  transition: padding-left 0.3s ease;
+}
+.step-row:hover {
+  padding-left: 12px;
+  border-bottom-color: rgba(232,40,30,0.3);
+}
 
 .steps-list {
   display: flex;
@@ -478,14 +521,15 @@ h2 {
 .g-item {
   background: var(--black);
   padding: 38px 32px;
-  transition: background 0.3s;
+  transition: background 0.3s, border-left 0.3s;
   cursor: default;
+  border-left: 2px solid transparent;
 }
-.g-item:hover { background: var(--black2); }
+.g-item:hover { background: var(--black2); border-left: 2px solid var(--red); }
 
 .g-icon {
   width: 36px; height: 36px;
-  border: 1px solid rgba(232,40,30,0.3);
+  border: 1px solid rgba(232,40,30,0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -516,17 +560,20 @@ h2 {
   margin-top: 40px;
 }
 
+/* ─── TAG HOVER ANIMATION ─── */
 .tag {
   padding: 9px 18px;
   border: 1px solid rgba(242,240,236,0.1);
   font-size: 0.85rem;
   color: var(--white-dim);
-  transition: all 0.2s;
+  transition: all 0.25s ease;
   cursor: default;
 }
 .tag:hover {
   border-color: var(--red);
   color: var(--white);
+  background: rgba(232,40,30,0.08);
+  transform: translateY(-2px);
 }
 
 .pourqui-sub {
@@ -560,7 +607,7 @@ h2 {
   font-family: var(--font-display);
   font-size: 3.5rem;
   color: var(--red);
-  opacity: 0.25;
+  opacity: 0.45;
   line-height: 1;
   margin-bottom: 16px;
   display: block;
@@ -730,10 +777,12 @@ h2 {
   color: rgba(242,240,236,0.25);
 }
 
+/* ─── FORM INPUT FOCUS ROUGE ─── */
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
   border-color: var(--red);
+  background: rgba(232,40,30,0.04);
 }
 
 .contact-form select {
@@ -801,7 +850,16 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
   50% { transform: translateY(-5px); }
 }
 
-/* ─── REVEAL ─── */
+/* ─── REVEAL DEPUIS GAUCHE pour steps ─── */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -832,25 +890,24 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
   <div class="hero-line"></div>
   <div class="hero-dot"></div>
 
-  <div class="eyebrow">Partout en France</div>
+  <div class="eyebrow ha ha-1">Partout en France</div>
 
-  <h1>
+  <h1 class="ha ha-2">
     Vos clients vous cherchent.<br>
-    On fait en sorte que<br>
-    <span class="accent">ce qu'ils trouvent</span><br>
+    On fait en sorte que <span class="accent">ce qu'ils trouvent</span><br>
     soit à votre hauteur.
   </h1>
 
-  <p class="hero-sub">
+  <p class="hero-sub ha ha-3">
     Une présence en ligne soignée, livrée en 48h. Vous n'avez rien à gérer — on s'occupe de tout, en permanence.
   </p>
 
-  <div class="hero-actions">
+  <div class="hero-actions ha ha-4">
     <a href="#contact" class="btn-red">Je veux être visible →</a>
     <a href="#comment" class="btn-ghost"><span>↓</span> Comment ça marche</a>
   </div>
 
-  <div class="hero-numbers">
+  <div class="hero-numbers ha ha-5">
     <div class="num-item">
       <span class="num-val">48<span class="sup">h</span></span>
       <span class="num-label">Délai de livraison</span>
@@ -929,28 +986,28 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
   <h2 class="reveal">Simple comme<br>un coup de fil.</h2>
 
   <div class="steps-list">
-    <div class="step-row reveal">
+    <div class="step-row reveal-left">
       <div class="step-index">01 →</div>
       <div class="step-content">
         <h3>Vous me parlez de votre activité</h3>
         <p>Un message, un appel. Je vous pose quelques questions sur ce que vous faites, pour qui, où. Rien de plus.</p>
       </div>
     </div>
-    <div class="step-row reveal">
+    <div class="step-row reveal-left">
       <div class="step-index">02 →</div>
       <div class="step-content">
         <h3>Je crée votre page en 48h</h3>
         <p>Je vous envoie un lien pour voir le résultat avant de payer. Vous validez, on ajuste si besoin.</p>
       </div>
     </div>
-    <div class="step-row reveal">
+    <div class="step-row reveal-left">
       <div class="step-index">03 →</div>
       <div class="step-content">
         <h3>Vous payez, c'est en ligne</h3>
         <p>99€ de mise en place, puis 49€/mois. Votre nom de domaine est activé, votre page est visible.</p>
       </div>
     </div>
-    <div class="step-row reveal">
+    <div class="step-row reveal-left">
       <div class="step-index">04 →</div>
       <div class="step-content">
         <h3>Vous n'y pensez plus jamais</h3>
@@ -1136,8 +1193,8 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
   <div class="contact-inner">
     <div class="contact-left reveal">
       <span class="s-label">Contact</span>
-      <h2>Dites-moi ce que<br>vous faites.</h2>
-      <p>Je crée votre page et vous l'envoyez avant même que vous payiez. Aucun risque.</p>
+      <h2>Dites-moi ce que vous faites.</h2>
+      <p>Je crée votre page et vous la recevez avant même de payer. Aucun risque.</p>
 
 ```
   <div class="contact-detail">
@@ -1204,7 +1261,7 @@ footer p { font-size: 0.78rem; color: rgba(242,240,236,0.25); }
       }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
 
   // FAQ
   document.querySelectorAll('.faq-q').forEach(btn => {
